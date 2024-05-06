@@ -1,113 +1,122 @@
+import BundlesList from "@/components/BundlesList";
+import ProductList from "@/components/ProductList";
+
+import { TypewriterEffectSmoothDemo } from "@/components/Typewriter";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
+
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="px-8">
+      {/* Hero Banner */}
+      <div
+        className="mx-auto max-w-2xl px-6 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-16 bg-slate-100 rounded-xl mt-8 lg:mt-14"
+        style={{
+          backgroundImage: "url('/bgHero.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.8,
+        }}
+      >
+        <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:gap-x-8">
+          <div className="flex flex-col justify-center">
+            <h1 className="text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl">
+              <span className="block">Vive el mejor</span>
+            </h1>
+            <TypewriterEffectSmoothDemo />
+            <p className="mt-6 md:mt-8 lg:mt-10 text-xl text-slate-900">
+              Las mejores máquinas de afeitar de acero inoxidable duraderas para
+              un afeitado perfecto.
+            </p>
+            <div className="mt-8">
+              <Link href="/#products">
+                <button className="animate-buttonheartbeat rounded-md bg-blue-800 px-6 py-3 font-semibold text-white w-full sm:w-auto">
+                  Compra Ahora
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="bg-white">
+        <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Suscríbete y Afeittate
+            </h2>
+            <p className="mt-4 text-gray-500">
+              Únete al club de afeitto y recibe tus cartuchos de afeitar en la
+              puerta de tu casa. Sin moverte, sin pedir nuevamente.
+            </p>
+
+            <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:gap-y-16 lg:gap-x-8">
+              <div className="border-t border-gray-200 pt-4">
+                <dt className="font-medium text-gray-900">Paso 1</dt>
+                <dd className="mt-2 text-sm text-gray-500">
+                  Elige nuestro set de suscripción
+                </dd>
+              </div>
+              <div className="border-t border-gray-200 pt-4">
+                <dt className="font-medium text-gray-900">Paso 2</dt>
+                <div className="flex flex-row space-x-2 items-center">
+                  <dd className="mt-2 text-sm text-gray-500">
+                    Selecciona la frecuencia de recambio
+                  </dd>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <QuestionMarkCircleIcon className="h-5 w-5 text-gray-400 items-center" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-72">
+                          Recomendaremos la frecuencia adecuada de acuerdo a tu
+                          frecuencia de afeitado semanal.
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+              </div>
+              <div className="border-t border-gray-200 pt-4">
+                <dt className="font-medium text-gray-900">Paso 3</dt>
+                <dd className="mt-2 text-sm text-gray-500">
+                  Revisa y disfruta!
+                </dd>
+              </div>
+            </dl>
+          </div>
+          <div className="grid grid-cols-1">
+            <Image
+              src="/placeholderImg.jpeg"
+              alt="Afeitto Set"
+              width={1000}
+              height={1000}
+              className="rounded-lg bg-gray-100 h-full max-h-[503px] w-full"
+            />
+            <button
+              type="button"
+              className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 animate-buttonheartbeat"
+            >
+              Elegir Set
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      {/* Product List */}
+      <ProductList id="products" />
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      {/* Bundles List */}
+      <BundlesList id="bundles" />
     </main>
   );
 }
